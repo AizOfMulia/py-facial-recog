@@ -1,7 +1,7 @@
 # py-facial-recog
 
 ## Requirements
-1. Python >= 3.6
+1. Python >= 3.8
 2. pip
 3. Virtualenv (Optional)
 
