@@ -3,7 +3,7 @@ import cv2
 
 import numpy
 from PIL import Image
-import pickle5 as pickle
+import pickle
 
 base_dir    =   os.path.dirname(os.path.abspath(__file__))
 user_dir    =   os.path.join(base_dir, "data/user")
