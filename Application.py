@@ -4,6 +4,11 @@ import PySimpleGUI as GUI
 import pickle5 as pickle
 
 path                =   os.path.dirname(os.path.abspath(__file__))
+labels              =   {}
+
+with open(path + "/data/saves/labels.pkl", 'rb') as f:
+    labels      =   pickle.load(f)
+    labels      =   {v:k for k,v in labels.items()}
 
 def main():
     layout              =   [[GUI.Text("Please Login")], [GUI.Button("Login")], [GUI.Button("Close")]]
@@ -14,12 +19,17 @@ def main():
 
         if event == "Login":
             #GUI.Popup("Login Clicked", keep_on_top=True)
-            facial_recongition()
+            user = facial_recongition()
+            #if authenticated then popup "User: Akmal has logged in"
+            GUI.Popup(user + " has logged in", keep_on_top=True)
 
         if event == "Close" or event == GUI.WIN_CLOSED:
             break
 
     window.close()
+
+#def authenticate():
+
 
 def facial_recongition():
     camera              =   cv2.VideoCapture(0)
@@ -29,11 +39,7 @@ def facial_recongition():
     recognizer      =   cv2.face.LBPHFaceRecognizer_create()
     recognizer.read(path + "/data/saves/cache.xml")
 
-    labels          =   {}
-
-    with open(path + "/data/saves/labels.pkl", 'rb') as f:
-        labels      =   pickle.load(f)
-        labels      =   {v:k for k,v in labels.items()}
+    name            =   ""
 
     if not camera.isOpened():
         print("Camera is not active")
@@ -55,7 +61,7 @@ def facial_recongition():
 
             id_, confidence   =   recognizer.predict(region_of_interest_gray)
 
-            if confidence >= 60 and confidence <= 85:
+            if confidence >= 75 and confidence <= 100:
                 font    =   cv2.FONT_HERSHEY_SIMPLEX
                 name    =   labels[id_]
 
@@ -77,8 +83,13 @@ def facial_recongition():
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
+        if name:
+            break
+
     camera.release()
     cv2.destroyAllWindows()
+
+    return name
 
 if __name__ == "__main__":
     main()
