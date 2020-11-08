@@ -1,7 +1,7 @@
 import cv2
 import os
 import PySimpleGUI as GUI
-import pickle5 as pickle
+import pickle
 
 path                =   os.path.dirname(os.path.abspath(__file__))
 labels              =   {}
