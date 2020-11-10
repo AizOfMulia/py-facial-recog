@@ -12,24 +12,20 @@ with open(path + "/data/saves/labels.pkl", 'rb') as f:
 
 def main():
     layout              =   [[GUI.Text("Please Login")], [GUI.Button("Login")], [GUI.Button("Close")]]
-    window              =   GUI.Window("The Next Gen App", layout, margins=(100, 50))
+    window              =   GUI.Window("Akmal's Facial Electric Boogaloo", layout, margins=(100, 50))
 
     while True:
         event, values   =   window.read()
 
         if event == "Login":
-            #GUI.Popup("Login Clicked", keep_on_top=True)
             user = facial_recongition()
-            #if authenticated then popup "User: Akmal has logged in"
+
             GUI.Popup(user + " has logged in", keep_on_top=True)
 
         if event == "Close" or event == GUI.WIN_CLOSED:
             break
 
     window.close()
-
-#def authenticate():
-
 
 def facial_recongition():
     camera              =   cv2.VideoCapture(0)
@@ -78,7 +74,7 @@ def facial_recongition():
 
             cv2.rectangle(frame, (x,y), (end_coord_x, end_coord_y), border_color, border_stroke_size)
 
-        cv2.imshow("Frame", frame)
+        cv2.imshow("The all seeing eye", frame)
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break

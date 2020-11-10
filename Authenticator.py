@@ -23,6 +23,8 @@ for root, dirs, files in os.walk(user_dir):
             path    =   os.path.join(root, file)
             label   =   os.path.basename(os.path.dirname(path)).replace(' ', '_').lower()
 
+            print(label, path)
+
             if label in label_id:
                 pass
             else:
