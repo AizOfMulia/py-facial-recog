@@ -10,6 +10,7 @@ using OpenCV and TKinter as GUI interface.
 
 ## Installation
 Go to directory and run:
+
 `pip install -r requirements.txt`
 
 Create a user folder in data and fill it with user's name and facial profile
@@ -28,9 +29,11 @@ data/
 ```
 
 Run `Authenticate.py` to cache the user information
+
 `python Authenticate.py`
 
 To compile an executable run - pyInstaller:
+
 `pyinstaller --onefile Application.py`
 
 Then copy and paste the data folder into the `/dist` folder
