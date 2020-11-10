@@ -28,9 +28,9 @@ data/
         |_ smile.jpg
 ```
 
-Run `Authenticate.py` to cache the user information
+Run `Authenticator.py` to cache the user information
 
-`python Authenticate.py`
+`python Authenticator.py`
 
 To compile an executable run - pyInstaller:
 
