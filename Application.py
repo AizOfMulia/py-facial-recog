@@ -7,11 +7,14 @@ path                =   os.path.dirname(os.path.abspath(__file__))
 labels              =   {}
 
 with open(path + "/data/saves/labels.pkl", 'rb') as f:
-    labels      =   pickle.load(f)
-    labels      =   {v:k for k,v in labels.items()}
+    labels          =   pickle.load(f)
+    labels          =   {v:k for k,v in labels.items()}
 
 def main():
-    layout              =   [[GUI.Text("Please Login")], [GUI.Button("Login")], [GUI.Button("Close")]]
+    GUI.theme_background_color('#FF69B4')
+    GUI.theme_button_color(('#003333', '#FFCC66'))
+
+    layout              =   [[GUI.Text("Please Login", text_color="#FFFFFF", background_color="#FF69B4")], [GUI.Button("Login")], [GUI.Button("Close")]]
     window              =   GUI.Window("Akmal's Facial Electric Boogaloo", layout, margins=(100, 50))
 
     while True:
@@ -28,7 +31,7 @@ def main():
     window.close()
 
 def facial_recongition():
-    camera              =   cv2.VideoCapture(0)
+    camera          =   cv2.VideoCapture(0)
 
     face_profile    =   cv2.CascadeClassifier(path + '/data/haarcascade_frontalface_default.xml')
     eye_profile     =   cv2.CascadeClassifier(path + '/data/haarcascade_eye.xml')
